@@ -20,7 +20,8 @@ const networks: Record<string, MirrorNetworkInfo> = {
     fee: { gasPrice: "0.00506", amount: "1518", gas: "2000000" }, // 0.000500 UST
     factory: "terra1ulgw0td86nvs4wtpsc80thv6xelk76ut7a7apj",
     service:
-      process.env.REACT_APP_MAINNET_SERVICE_URL || "https://api.terraswap.io/",
+      process.env.REACT_APP_MAINNET_SERVICE_URL ||
+      "https://api.quadswap.finance/",
     dashboard: process.env.REACT_APP_MAINNET_DASHBOARD_URL,
     router: "terra19qx5xe6q9ll4w0890ux7lv2p4mf3csd4qvt3ex",
   },
@@ -38,7 +39,7 @@ const networks: Record<string, MirrorNetworkInfo> = {
     factory: "terra18qpjm4zkvqnpjpw0zn0tdr8gdzvt8au35v45xf",
     service:
       process.env.REACT_APP_TESTNET_SERVICE_URL ||
-      "https://api-bombay.terraswap.io/",
+      "https://api.quadswap.finance/",
     dashboard: process.env.REACT_APP_TESTNET_DASHBOARD_URL,
     router: "terra14z80rwpd0alzj4xdtgqdmcqt9wd9xj5ffd60wp",
   },
