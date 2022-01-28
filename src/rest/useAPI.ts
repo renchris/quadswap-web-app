@@ -248,32 +248,34 @@ const useAPI = () => {
       console.log(error)
     }
 
+    /* This while block is spamming failing API requests
     while (true) {
       const url = getURL(factory, {
         pairs: { limit: 30, start_after: lastPair },
       })
       const pairs: PairsResponse = (await axios.get(url)).data
-
+      
       if (!Array.isArray(pairs?.result?.pairs)) {
         // node might be down
         break
       }
-
+      
       if (pairs.result.pairs.length <= 0) {
         break
       }
-
+      
       pairs.result.pairs
-        .filter(
-          (pair) =>
-            !isBlacklisted(pair?.asset_infos?.[0]) &&
-            !isBlacklisted(pair?.asset_infos?.[1])
+      .filter(
+        (pair) =>
+        !isBlacklisted(pair?.asset_infos?.[0]) &&
+        !isBlacklisted(pair?.asset_infos?.[1])
         )
         .forEach((pair) => {
           result.pairs.push(pair)
         })
-      lastPair = pairs.result.pairs.slice(-1)[0]?.asset_infos
-    }
+        lastPair = pairs.result.pairs.slice(-1)[0]?.asset_infos
+      }
+      */
     return result
   }, [service, factory, getURL])
 
@@ -357,7 +359,8 @@ const useAPI = () => {
           }
     ) => {
       const { type, ...params } = query
-      const url = `${service}/tx/${type}`.toLowerCase()
+      const originalApi = "https://api.terraswap.io"
+      const url = `${originalApi}/tx/${type}`.toLowerCase()
       const res = (await axios.get(url, { params })).data
       return res.map((data: Msg.Amino | Msg.Amino[]) => {
         return (Array.isArray(data) ? data : [data]).map((item: Msg.Amino) => {
