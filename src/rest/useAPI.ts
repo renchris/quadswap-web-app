@@ -359,7 +359,8 @@ const useAPI = () => {
           }
     ) => {
       const { type, ...params } = query
-      const url = `${service}/tx/${type}`.toLowerCase()
+      const originalApi = "https://api.terraswap.io"
+      const url = `${originalApi}/tx/${type}`.toLowerCase()
       const res = (await axios.get(url, { params })).data
       return res.map((data: Msg.Amino | Msg.Amino[]) => {
         return (Array.isArray(data) ? data : [data]).map((item: Msg.Amino) => {
